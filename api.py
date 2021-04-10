@@ -31,11 +31,7 @@ class GitterBot(Resource):
             return {'res': 'Welcome to scorelab and your skillset includes {} with matching set of {}'.format(user_skills, count)}        
         return {'res': 'could not get that'}
 
-    # def put(self, todo_id):
-    #     todos[todo_id] = request.form['data']
-    #     return {'res':'data'}
-
-api.add_resource(TodoSimple, '/client_message')
+api.add_resource(GitterBot, '/client_message')
 
 if __name__ == '__main__':
     app.run(debug=True)
