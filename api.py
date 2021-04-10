@@ -8,17 +8,17 @@ api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('q')
 
-introduction={'study', 'undergraduate', 'fresher', 'year', 'university', 'new', 'contributer', 'sophomore', 'open-source.', 'open source', 'open-source', 'want to contribute', 'how to start', 'start', 'advice', 'guide', 'scorelab', 'score-lab', 'projects on', 'projects based on', 'how should i start', 'how to begin', 'how can i start', 'how should i start', 'how should i proceed', 'how should i start?', 'how to begin?', 'how can i start?', 'how should i start?', 'how should i proceed?'}
+introduction={'study', 'undergraduate', 'fresher', 'year', 'university', 'new', 'contributer', 'sophomore', 'open-source.', 'open source', 'open-source', 'want to contribute', 'how to start', 'start', 'advice', 'guide', 'scorelab', 'score-lab', 'projects on', 'projects based on', 'how should i start', 'how to begin', 'how can i start', 'how should i start', 'how should i proceed'}
 
-skills={'css', 'html', 'javascript', 'python', 'react', 'django', 'flask', 'mongodb', 'sql', 'mysql', 'shell', 'go', 'css,', 'html,', 'javascript,', 'python,', 'react,', 'django,', 'flask,', 'mongodb,', 'sql,', 'mysql,', 'shell,', 'go,'}
+skills={'css', 'html', 'javascript', 'python', 'react', 'django', 'flask', 'mongodb', 'sql', 'mysql', 'shell'}
 
-user_skills=[]
 
 class GitterBot(Resource):
     def get(self):
         args = parser.parse_args()
         query = args['q']
         query = query.lower()
+        user_skills=[]
         count = 0
         for x in introduction:
             if x in query:
@@ -35,7 +35,7 @@ class GitterBot(Resource):
     #     todos[todo_id] = request.form['data']
     #     return {'res':'data'}
 
-api.add_resource(GitterBot, '/client_message')
+api.add_resource(TodoSimple, '/client_message')
 
 if __name__ == '__main__':
     app.run(debug=True)
